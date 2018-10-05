@@ -24,17 +24,16 @@ Background: movies have been added to database
 
 Scenario: restrict to movies with 'PG' or 'R' ratings
   # enter step(s) to check the 'PG' and 'R' checkboxes
-  When I check the following ratings: PG, R
+  Given I check the following ratings: PG, R
   
   # enter step(s) to uncheck all other checkboxes
-  When I uncheck the following ratings: G, NC-17, PG-13
+  Given I uncheck the following ratings: G, PG-13
   
   # enter step to "submit" the search form on the homepage
     And I press "Refresh"
     
   # enter step(s) to ensure that PG and R movies are visible
-    Then I should see 5 movies
-      And I should see "The Terminator"
+    Then I should see "The Terminator"
       And I should see "When Harry Met Sally"
       And I should see "Amelie"
       And I should see "The Incredibles"
@@ -48,4 +47,4 @@ Scenario: restrict to movies with 'PG' or 'R' ratings
       And I should not see "Chicken Run"
 
 Scenario: all ratings selected
-   Then I should see all of the movies
+   Then I should see all the movies
